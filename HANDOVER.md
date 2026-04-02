@@ -2,17 +2,33 @@
 
 ## プロジェクト概要
 
-**プロジェクト名：** 職人.new ドキュメントサイト  
-**作業ディレクトリ：** `D:\Claude_win\shokunin-docs`  
-**フレームワーク：** VitePress v1.6.4  
-**Node.js：** v22.18.0  
+**プロジェクト名：** 職人.new ドキュメントサイト
+**作業ディレクトリ：** `D:\Claude_win\shokunin-docs`
+**フレームワーク：** VitePress v1.6.4
+**Node.js：** v22.18.0
 **OS：** Windows
 
 ### プロダクト概要
 「職人.new」は建設・施設管理・保守点検業界向けのLINEベースの建設AIアシスタント。
-AIアシスタントの名前は「あずさ」。
+AIアシスタントの名前は「あずさ」（生年月日：2001年4月5日、22歳）。
 LINEで写真を送るだけで工事写真報告書が自動生成される（無料）。
 i-Reporter と連携している。
+
+### 参考資料
+- 紹介スライド（PDF）：`D:\Claude_win\shokunin-docs\職人.new 紹介資料.pdf`
+- 元のGoogle Slides：https://docs.google.com/presentation/d/16ZvRatmLpLA0-RiPwTPAq2j8ldRvkxOPrsClU3UU6XQ/
+
+---
+
+## 公開URL（GitHub Pages）
+
+```
+https://otias-arika.github.io/shokunin-docs/
+```
+
+**GitHubリポジトリ：** https://github.com/otias-arika/shokunin-docs
+**GitHubユーザー名：** otias-arika
+**デプロイ方式：** GitHub Actions（mainブランチにpushで自動デプロイ）
 
 ---
 
@@ -32,6 +48,11 @@ npm run docs:dev
 ```
 D:\Claude_win\shokunin-docs\
 ├── package.json
+├── HANDOVER.md                         ← この引き継ぎ文書
+├── 職人.new 紹介資料.pdf               ← 元のGoogle Slides PDF
+├── .github\
+│   └── workflows\
+│       └── deploy.yml                  ← GitHub Actions 自動デプロイ設定
 └── docs\
     ├── index.md                        ← トップページ（ホーム）
     ├── .vitepress\
@@ -49,14 +70,30 @@ D:\Claude_win\shokunin-docs\
     │       ├── line_manager_02.png     ← 管理者向けダミー画像②（手配作成）
     │       └── line_manager_03.png     ← 管理者向けダミー画像③（QRポスター）
     ├── guide\
-    │   ├── introduction.md             ← 職人.newとは
+    │   ├── introduction.md             ← 職人.newとは（あずさプロフィール含む）
     │   ├── getting-started.md          ← はじめ方
+    │   ├── quickstart.md               ← クイックスタート
+    │   ├── vision.md                   ← ビジョン
+    │   ├── social-issues.md            ← 解決する社会課題
+    │   ├── for-worker.md               ← 職人さん向けガイド
+    │   ├── for-manager.md              ← 現場管理者向けガイド
     │   └── roadmap.md                  ← アップデート予定
     ├── manual\
     │   ├── for-worker.md               ← 職人さん向けマニュアル
     │   └── for-manager.md              ← 現場管理者向けマニュアル
     └── features\
-        └── overview.md                 ← 機能一覧
+        ├── overview.md                 ← 機能一覧（サイドバー登録済み）
+        ├── ai.md                       ← AI機能
+        ├── dispatch.md                 ← 手配管理機能
+        ├── map.md                      ← マップ機能
+        ├── calendar.md                 ← カレンダービュー
+        ├── signature.md                ← 署名機能
+        ├── qr-poster.md                ← 現場QRポスター
+        ├── invitation.md               ← 招待・ユーザー承認システム
+        ├── multilingual.md             ← 多言語対応
+        ├── i-reporter.md               ← i-Reporter連携
+        ├── report-download.md          ← 報告書ダウンロード
+        └── multi-tenant.md             ← 複数現場・企業の管理
 ```
 
 ---
@@ -74,13 +111,6 @@ D:\Claude_win\shokunin-docs\
 - 元画像（黒背景）をPython Pillowで背景透過処理済み
 - ヘッダー左上に表示（白抜き文字のためティールグリーン背景に映える）
 
-### 重要なCSS設定
-`docs/.vitepress/theme/custom.css` に以下が含まれている：
-- ナビバーをティールグリーンに変更
-- ロゴ画像の表示設定（`display: block !important; visibility: visible !important`）
-- ヒーローセクションのグラデーションテキスト
-- フィーチャーカードのホバーエフェクト
-
 ---
 
 ## ナビゲーション構成
@@ -97,8 +127,25 @@ D:\Claude_win\shokunin-docs\
 │   ├── 職人さん向け
 │   └── 現場管理者向け
 └── 機能説明
-    └── 機能一覧
+    └── 機能一覧（← ここから各機能ページへリンク）
 ```
+
+**注意：** features/ 配下の各機能ページはサイドバーに個別登録していない。
+「機能一覧」ページのテーブルリンク経由でアクセスする設計（意図的）。
+
+---
+
+## サイト更新方法
+
+ファイルを編集後、以下のコマンドで自動デプロイされる：
+
+```bash
+git add .
+git commit -m "変更内容の説明"
+git push
+```
+
+pushするだけでGitHub Actionsが自動的にビルド＆デプロイする（約1分）。
 
 ---
 
@@ -122,9 +169,10 @@ D:
 cd Claude_win\shokunin-docs
 ```
 
-### メモ帳でのファイル編集
-メモ帳でconfigファイルを編集する際、クリップボードの内容が誤って書き込まれることがある。
-編集後は必ず `type ファイル名` で内容を確認すること。
+### base設定について
+`config.mjs` に `base: '/shokunin-docs/'` が設定されている。
+これはGitHub Pages用の設定で、**ローカル開発時も有効**。
+ローカルでは `http://localhost:5173/shokunin-docs/` でアクセスする。
 
 ---
 
@@ -135,11 +183,6 @@ cd Claude_win\shokunin-docs
   - 保存先：`docs/public/manual/`
   - ファイル名は既存のダミー画像と同じ名前で上書き
   - スクリーンショットはGoogle Driveに保存予定（Android端末）
-
-### 優先度：中
-- [ ] GitHub Pagesでインターネット公開
-  - GitHubアカウントが必要
-  - `npm run docs:build` でビルド後、GitHub Pagesにデプロイ
 
 ### 優先度：低
 - [ ] ページ内容の追加・編集
@@ -157,6 +200,20 @@ cd Claude_win\shokunin-docs
 | `line_manager_01.png` | 管理者：ダッシュボード全体 |
 | `line_manager_02.png` | 管理者：手配作成フォーム |
 | `line_manager_03.png` | 管理者：QRポスター生成画面 |
+
+---
+
+## 作業履歴
+
+### 2026-04-02
+- Google Slides PDF（職人.new 紹介資料.pdf）をもとに内容を確認
+- `guide/introduction.md` にあずさの生年月日を追加
+- `guide/vision.md` と `guide/social-issues.md` の重複を解消
+- `features/multi-tenant.md` を新規作成（マルチテナントアーキテクチャ）
+- GitHub Pages へのデプロイ完了
+  - リポジトリ：https://github.com/otias-arika/shokunin-docs
+  - 公開URL：https://otias-arika.github.io/shokunin-docs/
+  - GitHub Actions による自動デプロイ設定済み
 
 ---
 
