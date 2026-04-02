@@ -1,0 +1,74 @@
+/* 職人.new カラーテーマ — ティールグリーン */
+
+:root {
+  --vp-c-brand-1: #2abfbf;
+  --vp-c-brand-2: #1fa8a8;
+  --vp-c-brand-3: #178f8f;
+  --vp-c-brand-soft: rgba(42, 191, 191, 0.14);
+  --vp-button-brand-bg: #2abfbf;
+  --vp-button-brand-hover-bg: #1fa8a8;
+  --vp-button-brand-active-bg: #178f8f;
+}
+
+.VPNav, .VPNavBar, .VPNavBar .container {
+  background-color: #1abcbc !important;
+  border-bottom: none !important;
+}
+
+.VPNavBarTitle .title {
+  color: #ffffff !important;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink {
+  color: #ffffff !important;
+}
+
+.VPNavBarTitle img.logo {
+  height: 28px !important;
+  width: auto !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.VPHero .name {
+  background: linear-gradient(135deg, #1abcbc, #0d8f8f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.VPHero .tagline {
+  color: #2abfbf;
+}
+
+.VPFeature {
+  border: 1px solid rgba(42, 191, 191, 0.25) !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.VPFeature:hover {
+  border-color: #2abfbf !important;
+  box-shadow: 0 4px 20px rgba(42, 191, 191, 0.15);
+}
+
+.VPSidebarItem.is-active > .item .link {
+  color: #1abcbc !important;
+}
+
+.vp-doc a { color: #1abcbc; }
+.vp-doc a:hover { color: #0d8f8f; }
+
+.vp-doc table th {
+  background-color: rgba(42, 191, 191, 0.1);
+}
+
+.VPButton.brand {
+  background-color: #1abcbc !important;
+  border-color: #1abcbc !important;
+}
+
+.VPButton.brand:hover {
+  background-color: #0d9f9f !important;
+  border-color: #0d9f9f !important;
+}
