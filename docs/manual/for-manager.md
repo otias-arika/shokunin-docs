@@ -1,28 +1,34 @@
 # 現場管理者向けマニュアル
 
-管理画面から職人さんへの手配・承認・全体管理ができます。
+管理画面はPC（ブラウザ）から操作します。職人さんへの手配・承認・全体管理ができます。
+
+> **管理画面URL：** [https://snewdev-cnf5heg2bwfqhgfm.japaneast-01.azurewebsites.net/](https://snewdev-cnf5heg2bwfqhgfm.japaneast-01.azurewebsites.net/)
 
 ---
 
-## 管理者にできること
+## Step 1：ログイン
 
-| 機能 | 内容 |
-|------|------|
-| 作業手配 | 職人さんへ工事内容をLINEで送信 |
-| ユーザー承認 | 新規登録した職人さんを承認・却下 |
-| 署名承認 | 職人さんの完了署名を承認・却下 |
-| QRポスター生成 | 現場用のQRコードポスターをワンクリック作成 |
-| ダッシュボード | 全体の進捗を一覧で把握 |
+管理画面へのログイン方法は2種類あります。
+
+### LINEでログイン
+
+![LINEログイン画面](/manual/manager_login_line.png)
+
+LINEアカウントと連携してログインします。はじめてログインする場合はこちらを推奨します。
+
+### QRコードでログイン
+
+![QRコードログイン画面](/manual/manager_login_qr.png)
+
+LINEのバーコード読み取り機能で、画面のQRコードを読み取ってログインします。
 
 ---
 
-## Step 1：ダッシュボードで全体を把握する
+## Step 2：ダッシュボードで全体を把握する
 
-管理画面にログインすると、全現場の状況が一目でわかります。
+ログイン後、ダッシュボードが表示されます。全現場の状況が一目でわかります。
 
-<div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; margin:24px 0">
-  <img src="/manual/line_manager_01.png" alt="管理者ダッシュボード" style="width:200px; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.12)">
-  <div style="flex:1; min-width:200px">
+![ダッシュボード](/manual/manager_dashboard.png)
 
 **ダッシュボードで確認できること：**
 
@@ -39,20 +45,15 @@
 | 報告済み | 職人さんが写真を提出済み |
 | 完了 | 全作業完了 |
 
-  </div>
-</div>
-
 ---
 
-## Step 2：工事手配を作成する
+## Step 3：手配管理
 
 職人さんへ作業内容をLINEで送信します。
 
-<div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; margin:24px 0">
-  <img src="/manual/line_manager_02.png" alt="手配作成フォーム" style="width:200px; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.12)">
-  <div style="flex:1; min-width:200px">
+![手配管理画面](/manual/manager_dispatch.png)
 
-**入力項目：**
+**手配作成の入力項目：**
 
 1. **担当ユーザー** — 職人さんを選択
 2. **工事名** — 作業内容の名称
@@ -60,24 +61,52 @@
 4. **発注者** — お客様の名前
 5. **報告者** — 担当職人の名前
 6. **工事予定日** — 作業予定日
-7. **工事住所** — 現場の住所
+7. **工事住所** — 現場の住所（Google Mapsリンクが自動生成）
 
 入力後「**更新する**」ボタンで保存、職人さんのLINEに通知が届きます。
 
 > 「下書き保存」で後から送信することもできます。
 
-  </div>
-</div>
+---
+
+## Step 4：ユーザー管理
+
+職人さんの登録・承認を管理します。
+
+![ユーザー管理画面](/manual/manager_user.png)
+
+### 承認手順
+
+新しい職人さんがQRコードまたは招待リンクからLINE登録すると「承認待ち」になります。
+
+1. 「ユーザー管理」を開く
+2. 承認待ちの職人さんを確認
+3. 「**承認**」または「**却下**」をクリック
+4. 職人さんのLINEに自動で通知が届く
+
+### 管理者権限の付与
+
+特定の職人さんに管理者権限を付与できます。現場リーダーなどへの委任に便利です。
 
 ---
 
-## Step 3：QRポスターを生成する
+## Step 5：テナント設定
+
+現場（テナント）ごとの設定を管理します。
+
+![テナント設定画面](/manual/manager_tenant.png)
+
+- LINE Bot・i-Reporter・AIの接続設定
+- 招待リンクの生成
+- テナント情報の編集
+
+---
+
+## Step 6：QRポスターの生成
 
 毎日の現場作業向けにQRポスターを印刷して掲示します。
 
-<div style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; margin:24px 0">
-  <img src="/manual/line_manager_03.png" alt="QRポスター生成" style="width:200px; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.12)">
-  <div style="flex:1; min-width:200px">
+![QRポスター生成画面](/manual/manager_qr_poster.png)
 
 **手順：**
 
@@ -90,24 +119,6 @@
 QRコードをスマホで読み取るだけで、その場でLINE友達追加＆工事情報が自動入力されます。
 
 > アプリインストール不要。60代のベテランも、今日来た外国人職人も、すぐ使えます。
-
-  </div>
-</div>
-
----
-
-## ユーザー管理・承認
-
-### 職人さんの承認
-新しい職人さんがQRコードからLINE登録すると「承認待ち」になります。
-
-1. 管理画面の「ユーザー管理」を開く
-2. 承認待ちの職人さんを確認
-3. 「承認」または「却下」をクリック
-4. 職人さんのLINEに自動で通知が届く
-
-### 管理者権限の付与
-特定の職人さんに管理者権限を付与することもできます。現場リーダーなどへの委任に便利です。
 
 ---
 
