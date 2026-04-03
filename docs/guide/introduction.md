@@ -12,6 +12,10 @@
 
 職人.newのコアとなるAIアシスタントが**あずさ**です。
 
+<div style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap; margin:24px 0">
+  <img src="/azusa.png" alt="AIアシスタント あずさ" style="width:180px; border-radius:12px;">
+  <div style="flex:1; min-width:200px">
+
 | 項目 | 内容 |
 |------|------|
 | 名前 | あずさ |
@@ -20,6 +24,9 @@
 | 得意なこと | 写真報告書の作成、建設業知識のサポート、現場相談対応 |
 
 あずさは現在、写真報告書の作成を中心に対応しており、職人さんから学びながら日々できることを増やしていきます。職人.newの機能アップ＝あずさの成長です。
+
+  </div>
+</div>
 
 ## 対象業界
 
