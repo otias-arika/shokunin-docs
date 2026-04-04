@@ -1,5 +1,9 @@
 # 職人.newとは
 
+<video controls style="width:100%; border-radius:12px; margin:16px 0;">
+  <source src="/video/concept-movie.mp4" type="video/mp4">
+</video>
+
 ## サービス概要
 
 **職人.new**は、建設・施設管理・保守点検業界の「職人不足」問題に向き合い、AIアシスタントとして職人さんに寄り添うサービスです。
