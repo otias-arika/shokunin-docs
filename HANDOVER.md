@@ -38,7 +38,7 @@ https://otias-arika.github.io/shokunin-docs/
 D:
 cd Claude_win\shokunin-docs
 npm run docs:dev
-# ブラウザで http://localhost:5173/ を開く
+# ブラウザで http://localhost:5173/shokunin-docs/ を開く
 ```
 
 ---
@@ -62,6 +62,11 @@ D:\Claude_win\shokunin-docs\
     │       └── custom.css              ← ティールグリーンのカスタムCSS
     ├── public\
     │   ├── logo.png                    ← 背景透過済みロゴ
+    │   ├── azusa.png                   ← あずさキャラクター画像（PDF抽出・背景透過済み）
+    │   ├── video\
+    │   │   └── concept-movie.mp4       ← コンセプトムービー（24MB）
+    │   │                                  ※元ファイル名：職人new紹介動画ーあずさー.m4v.mp4
+    │   │                                  ※Viteが日本語ファイル名を解決できないためASCII名に変更
     │   └── manual\
     │       ├── line_worker_01.png      ← 職人向けダミー画像①（友達追加）
     │       ├── line_worker_02.png      ← 職人向けダミー画像②（手配通知）
@@ -70,7 +75,7 @@ D:\Claude_win\shokunin-docs\
     │       ├── line_manager_02.png     ← 管理者向けダミー画像②（手配作成）
     │       └── line_manager_03.png     ← 管理者向けダミー画像③（QRポスター）
     ├── guide\
-    │   ├── introduction.md             ← 職人.newとは（あずさプロフィール含む）
+    │   ├── introduction.md             ← 職人.newとは（あずさ画像・コンセプトムービー含む）
     │   ├── getting-started.md          ← はじめ方
     │   ├── quickstart.md               ← クイックスタート
     │   ├── vision.md                   ← ビジョン
@@ -80,7 +85,7 @@ D:\Claude_win\shokunin-docs\
     │   └── roadmap.md                  ← アップデート予定
     ├── manual\
     │   ├── for-worker.md               ← 職人さん向けマニュアル
-    │   └── for-manager.md              ← 現場管理者向けマニュアル
+    │   └── for-manager.md              ← 現場管理者向けマニュアル（PC管理画面ベースで作成済み）
     └── features\
         ├── overview.md                 ← 機能一覧（サイドバー登録済み）
         ├── ai.md                       ← AI機能
@@ -147,6 +152,9 @@ git push
 
 pushするだけでGitHub Actionsが自動的にビルド＆デプロイする（約1分）。
 
+**注意：** 画像・動画ファイルを変更・追加した場合も都度pushが必要。
+まとめて変更してから1回pushでOK（都度pushする必要はない）。
+
 ---
 
 ## 既知の問題・注意事項
@@ -174,15 +182,23 @@ cd Claude_win\shokunin-docs
 これはGitHub Pages用の設定で、**ローカル開発時も有効**。
 ローカルでは `http://localhost:5173/shokunin-docs/` でアクセスする。
 
+### publicフォルダのファイル名について
+Vite（VitePressのビルドエンジン）は**日本語・全角文字のファイル名を解決できない**場合がある。
+`docs/public/` 配下のファイルは必ずASCII（半角英数字・ハイフン・アンダースコア）で命名すること。
+- NG例：`職人new紹介動画ーあずさー.m4v.mp4`
+- OK例：`concept-movie.mp4`
+
 ---
 
 ## 今後の作業（未完了）
 
 ### 優先度：高
-- [ ] ダミー画像を実際のLINEスクリーンショットに差し替え
-  - 保存先：`docs/public/manual/`
-  - ファイル名は既存のダミー画像と同じ名前で上書き
-  - スクリーンショットはGoogle Driveに保存予定（Android端末）
+- [ ] ダミー画像を実際のスクリーンショットに差し替え
+  - **管理者向け**（PC画面）：`docs/public/manual/line_manager_01.png` ～ `03.png`
+  - **職人向け**（LINE画面）：`docs/public/manual/line_worker_01.png` ～ `03.png`
+  - 同じファイル名で上書きするだけでOK
+- [ ] concept-movie.mp4 を GitHub Pages にpush（ネット環境が改善したら）
+  - ローカルでは表示確認済み、24MBのため大容量push注意
 
 ### 優先度：低
 - [ ] ページ内容の追加・編集
@@ -197,9 +213,9 @@ cd Claude_win\shokunin-docs
 | `line_worker_01.png` | 職人：LINEあずさとのトーク画面（友達追加後） |
 | `line_worker_02.png` | 職人：工事手配通知が届いた画面 |
 | `line_worker_03.png` | 職人：写真アップロード画面 |
-| `line_manager_01.png` | 管理者：ダッシュボード全体 |
-| `line_manager_02.png` | 管理者：手配作成フォーム |
-| `line_manager_03.png` | 管理者：QRポスター生成画面 |
+| `line_manager_01.png` | 管理者：ダッシュボード全体（PC画面） |
+| `line_manager_02.png` | 管理者：手配作成フォーム（PC画面） |
+| `line_manager_03.png` | 管理者：QRポスター生成画面（PC画面） |
 
 ---
 
@@ -214,6 +230,16 @@ cd Claude_win\shokunin-docs
   - リポジトリ：https://github.com/otias-arika/shokunin-docs
   - 公開URL：https://otias-arika.github.io/shokunin-docs/
   - GitHub Actions による自動デプロイ設定済み
+
+### 2026-04-04
+- `manual/for-manager.md` をPC管理画面ベースで全面改訂（6ステップ構成）
+  - Notion ページ参照：https://www.notion.so/1c9de81e42af807ea8c8f2e1c1b3e735
+- `docs/public/azusa.png` を追加（PDF抽出 → Python Pillowで黒背景透過処理）
+- `guide/introduction.md` にあずさ画像を追加（flexレイアウトでプロフィールと並列表示）
+- `guide/introduction.md` にコンセプトムービーを追加（タイトル直下）
+  - 動画ファイル：`docs/public/video/concept-movie.mp4`（24MB）
+  - ファイル名を日本語→ASCII に変更（Vite解決エラー回避）
+  - ローカル表示確認済み・GitHub Pagesへのpushは未完了（ネット環境不良のため）
 
 ---
 
